@@ -1,0 +1,25 @@
+{% extends 'layout.html' %}
+
+{% block content %}
+<div class="container">           
+
+    {% if numbers %}
+    <h5>Listado:</h5>
+    <ul>
+        {% for n in numbers %}
+            <li>{{n}}</li>
+        {% endfor %}
+    </ul>
+    <h5>Minimo: {{ min }}</h5>
+    <h5>Maximo: {{ max }}</h5>
+    <h5>Promedio: {{ avg }}</h5>
+    <h5>Elementos repetidos:</h5>
+
+    {% for item in count %}
+        <h5>{{item.num}} es repetido {{ item.amount }} veces.</h5>
+    {% endfor %}
+    {% endif %}
+
+</div>
+
+{% endblock %}

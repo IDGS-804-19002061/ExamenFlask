@@ -1,0 +1,29 @@
+{% extends "base.html" %}
+
+{% block content %}
+<div class="column is-4 is-offset-4">
+     <!-- alert -->
+        {% with messages = get_flashed_messages() %}
+        {% if messages %}
+            <div class="notification is-success">
+                {{ messages[0] }}
+            </div>
+        {% endif %}
+        {% endwith %}
+    <h3 class="title">Información personal</h3>
+    <br>
+    <div class="box">
+        {% from '_macros.html' import render_field %}
+        <form method="POST" action="/profile">
+            {{ form.csrf_token }}
+            <input type="hidden" name="csrf_token" value="{{csrf_token()}}">
+            {{ render_field(form.id) }}
+            {{ render_field(form.email) }}
+            {{ render_field(form.name) }}
+            {{ render_field(form.password) }}
+        
+            <button class="button is-block is-info is-large is-fullwidth">Guardar</button>
+        </form>
+    </div>
+</div>
+{% endblock %}

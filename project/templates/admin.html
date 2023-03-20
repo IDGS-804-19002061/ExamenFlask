@@ -1,0 +1,46 @@
+
+{% extends "base.html" %}
+
+{% block content %}
+<h1 class="title">
+  Bienvenido Administrador
+</h1>
+<br>
+<a class="button is-responsive is-link" href="/add">Agregar</a>
+    <table class="table" style="min-width: 100%;">
+        <thead>
+          <tr>
+            <th>Id</th>
+            <th>Imagen</th>
+            <th>Nombre</th>
+            <th>Precio $</th>
+            <th>Stock</th>
+            <th>Status</th>
+            <th>Opciones</th>
+          </tr>
+        </thead>
+        <tbody>
+            {% if products %}
+            {% for p in products %}
+            <tr>
+              <td>{{p.id}}</td>  
+              <td><img src={{p.image}} style="max-width: 50px;"></td>  
+              <td>{{p.name}}</td>  
+              <td>{{p.price}}</td>  
+              <td>{{p.stock}}</td>  
+              <td>{{p.active}}</td>  
+              <td>
+                <a class="button is-responsive is-link" href="edit?id={{p.id}}">
+                  Editar</a>
+                <a class="button is-responsive is-danger" href="delete?id={{p.id}}">
+                 Eliminar</a>
+              </td>  
+            </tr>
+            {% endfor %}
+            {% endif %}
+          
+        </tbody>
+      </table>
+
+
+{% endblock %}
